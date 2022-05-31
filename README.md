@@ -1,3 +1,27 @@
+## Static Analysis &amp; Automated Testing Demo
+
+### Setup
+
+- Ensure docker desktop is installed and running
+- Clone the repo
+- `composer install`
+- `./vendor/bin/sail up` 
+- Go to `http://localhost`
+
+### Running PHPunit
+
+- In your terminal type: `./vendor/bin/phpunit`
+
+### Running Selenium (Laravel Dusk)
+
+- In your terminal type: `php artisan dusk`
+
+### Running Psalm
+
+- In your terminal type: `./vendor/bin/psalm`
+
+---
+---
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
