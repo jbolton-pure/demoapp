@@ -1,4 +1,4 @@
-name: Laravel
+name: DemoApp
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  laravel-tests:
+  all-tests:
 
     runs-on: ubuntu-latest
 
@@ -28,15 +28,20 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
-    - name: Run tests (Unit and Feature tests) via PHPUnit
+    - name: Run Psalm
+      env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+      run: vendor/bin/psalm
+    - name: Run PHPUnit tests
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
-    - name: Run Psalm
+    - name: Run Selenium tests
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/psalm
-
-
+      run: |
+        php artisan dusk:driver 73
+        php artisan dusk
